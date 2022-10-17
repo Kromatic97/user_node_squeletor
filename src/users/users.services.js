@@ -62,7 +62,7 @@ const registerUser = (req, res) => {
 
 
 
-const patchUser = (req, res) =>{
+const patchUser = (req, res) => {
     const id= req.params.id
     const { firstName, lastName, phone, gender, country } = req.body
 
@@ -89,6 +89,14 @@ const deleteUser = (req, res) => {
             res.status(404).json({message: 'Invalid ID'})
         }})
             .catch(err => {res.status(400).json({message: err.message})
-        })
+    })
     }
+}
+
+module.exports = {
+    getAllUsers,
+    getUseById,
+    patchUser,
+    registerUser,
+    deleteUser
 }
