@@ -21,3 +21,5 @@
 - servicios
 - rutas
 
+
+- npm install passport passport-jwt passport passport-jwt jsonwebtoken

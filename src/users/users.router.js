@@ -1,3 +1,4 @@
+
 const router = require('express').Router()
 
 const userServices = require ('./users.services')
@@ -11,7 +12,7 @@ router.get('/', userServices.getAllUsers)
 
 
 
-//rutas dinamicas por ID//
+//rutas dinamicas definidas//
 router.route('/:id')
     .get(userServices.getUserById)
     .patch(userServices.patchUser)
