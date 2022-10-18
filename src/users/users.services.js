@@ -1,4 +1,4 @@
-const { restart } = require('nodemon')
+
 const usersControllers = require ('./users.controllers')
 
 const getAllUsers = (req, res) => {
@@ -34,17 +34,17 @@ const registerUser = (req, res) => {
         phone&&
         birthday
         ) {
-//se ejecuta el controller
-            usersControllers.createUser({
-                firstName, lastName, email, password, phone, birthday, gender, country  
-            })
-
-            .then(data => {
-                res.status(201).json(data)
-            })
-            .catch(err => {
-                res.status(400).json(err.message)
-            })
+            //se ejecuta el controller
+                        usersControllers.createUser({
+                            firstName, lastName, email, password, phone, birthday, gender, country  
+                        })
+            
+                        .then(data => {
+                            res.status(201).json(data)
+                        })
+                        .catch(err => {
+                            res.status(400).json(err.message)
+                        })
 
         } else {
             //error si no manda todos los datos
@@ -91,7 +91,7 @@ const deleteUser = (req, res) => {
             .catch(err => {res.status(400).json({message: err.message})
     })
     }
-}
+
 
 module.exports = {
     getAllUsers,
@@ -99,4 +99,4 @@ module.exports = {
     patchUser,
     registerUser,
     deleteUser
-}
+}}
