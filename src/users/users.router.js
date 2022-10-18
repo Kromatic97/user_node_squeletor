@@ -1,6 +1,6 @@
-const router =('express').Router()
+const router = require('express').Router()
 
-const userServices = require('./users.services')
+const userServices = require ('./users.services')
 
 //?rutas raiz
 router.get('/', userServices.getAllUsers)

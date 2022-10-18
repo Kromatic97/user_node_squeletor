@@ -11,7 +11,7 @@ const getAllUsers = (req, res) => {
     })
 }
 
-const getUseById = (req, res) => {
+const getUserById = (req, res) => {
     const id =  req.params.id
     usersControllers.getUserById(id)
 
@@ -23,17 +23,11 @@ const getUseById = (req, res) => {
     })   
 }
 
+
 //create USER//
 const registerUser = (req, res) => {
-    const  {firstName, lastName, email, password, phone, birthday, gender, country } = req.body
-    if(
-        firstName&&
-        lastName&&
-        email&&
-        password&&
-        phone&&
-        birthday
-        ) {
+    const  {firstName, lastName, email, password, phone, birthday, gender, country } = req.body;
+    if (firstName && lastName && email && password  && phone && birthday) {
             //se ejecuta el controller
                         usersControllers.createUser({
                             firstName, lastName, email, password, phone, birthday, gender, country  
@@ -45,21 +39,20 @@ const registerUser = (req, res) => {
                         .catch(err => {
                             res.status(400).json(err.message)
                         })
-
         } else {
             //error si no manda todos los datos
-        res.status(400).json({message:'All fields must be complete', fields:{ 
-                
-        firstName: 'string',
-        lastName:'string',
-        email:'example@gmail.com',
-        password:"string",
-        phone: '+555321321',
-        birthday:'YYYY/MM/DD'
+        res.status(400).json({message:'All fields must be complete', fields:{                
+            firstName: 'string',
+            lastName:'string',
+            email:'example@gmail.com',
+            password:"string",
+            phone: '+555321321',
+            birthday:'YYYY/MM/DD'
         
         }})
-}
-
+    
+    }
+};
 
 
 const patchUser = (req, res) => {
@@ -71,32 +64,36 @@ const patchUser = (req, res) => {
         if (data[0]){
             res.status(200).json({message:`User with ID: ${id}, edited succefully`})
         }else{
-            res.status(400).json ({message:`Invalid ID`})
+            res.status(404).json ({message:`Invalid ID`})
         }
     })
 
     .catch(err => {
         res.status(400).json ({message:err.message })
     })
-};
+}
+
+
 
 const deleteUser = (req, res) => {
-    const id = req.params.idusersControllers.deleteUser(id)
+    const id = req.params.id
+    usersControllers.deleteUser(id)
     .then(data => {
         if(data) {
             res.status(204).json()
-        }else {
+        } else {
             res.status(404).json({message: 'Invalid ID'})
         }})
-            .catch(err => {res.status(400).json({message: err.message})
+    .catch(err => {
+        res.status(400).json({message: err.message})
     })
-    }
+};
 
 
 module.exports = {
     getAllUsers,
-    getUseById,
+    getUserById,
     patchUser,
     registerUser,
     deleteUser
-}}
+}

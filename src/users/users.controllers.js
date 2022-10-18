@@ -1,5 +1,5 @@
 //dependencies
-const uuid = requre ('uuid')
+const uuid = require ('uuid')
 
 
 const Users = require ('../models/users.models')

@@ -1,16 +1,18 @@
 //Dependencias
 
-const express = require ('express');
-//Files
-const config = require ('./config')
+const express = require ('express')
 
-//Routes
-const userRouter = require ('./users/user.router')
+//FILES
+const config = require ('./config')
+//ROUTES
+const userRouter = require ('./users/users.router')
 
 //Initial config
 const app = express()
 
 app.use(express.json())
+
+
 
 app.get('/', (req, res) => {
     res.status(200).json ({
@@ -19,9 +21,7 @@ app.get('/', (req, res) => {
     })
 } )
 
-
-app.use('/api/v1/users')
-
+app.use('/api/v1/users', userRouter)
 
 app.listen(config.port, () => {
     console.log(`Server started at port ${config.port}`)
