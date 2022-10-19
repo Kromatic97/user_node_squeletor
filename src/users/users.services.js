@@ -45,7 +45,7 @@ const registerUser = (req, res) => {
             firstName: 'string',
             lastName:'string',
             email:'example@gmail.com',
-            password:"string",
+            password:'string',
             phone: '+555321321',
             birthday:'YYYY/MM/DD'
         
