@@ -105,11 +105,40 @@ const getMyUser = (req, res) => {
 }
 
 
+//!Path de MyUser
+const patchMyUser = (req, res) => {
+    const data = req.user
+    usersControllers.updateUser(data)
+    .then(data => {
+        res.status(200).json(data)
+    })
+    .catch(err => {
+        res.status(400).json({message:err.message})
+    })
+}
+
+
+//!Delete de  MyUSER
+const deleteMyUser = (req, res) => {
+    const id = req.user.id
+    usersControllers.deleteUser(id)
+    .then(data => {
+        res.status(200).json(data)
+})
+    .catch(err => {
+        res.status(400).json({message:err.message})
+    })
+}
+
+
+
 module.exports = {
     getAllUsers,
     getUserById,
     patchUser,
     registerUser,
     deleteUser,
-    getMyUser
+    getMyUser,
+    deleteMyUser,
+    patchMyUser
 }

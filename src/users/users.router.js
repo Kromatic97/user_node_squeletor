@@ -22,8 +22,17 @@ router.route('/me')
     .get(
         passport.authenticate('jwt', {session:false}),
         userServices.getMyUser)
-   // .patch()
-   // .delete()
+   
+   
+    .delete(
+        passport.authenticate('jwt', {session:false}),
+        userServices.deleteMyUser)
+
+
+   .patch(
+    passport.authenticate('jwt', {session:false}),
+    userServices.patchMyUser
+   )
 
 
 //rutas dinamicas definidas//
