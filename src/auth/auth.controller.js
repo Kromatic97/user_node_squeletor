@@ -1,10 +1,12 @@
 //** */
-const {getUserByEmail} = require ("../users/users.controllers")
-const {comparePassword} = require ('../utils/crypto')
+const { getUserByEmail } = require ("../users/users.controllers")
+const { comparePassword } = require ('../utils/crypto')
 
 const loginUser = async (email, password) => {
     //Este controlador tiene 2 posibles respuestas//
-    //1 credenciales validad y retorna usuario o la inversa
+    //1 credenciales validas y retorna usuario 
+    //2 credenciales invlidas retorna false
+
     try {
         const user = await getUserByEmail(email)
         const verifyPassword = comparePassword(password, user.password)
@@ -19,9 +21,9 @@ const loginUser = async (email, password) => {
 
 }
 
-loginUser('rogi@gmail.com', 'root')
-    .then(response => console.log(response))
-    .catch(err => console.log(err))
+// loginUser('rogi@gmail.com', 'root')
+//     .then(response => console.log(response))
+//     .catch(err => console.log(err))
 
 module.exports = {
     loginUser
