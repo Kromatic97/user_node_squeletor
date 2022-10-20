@@ -1,10 +1,17 @@
 
 const router = require('express').Router()
 
+const { session } = require('passport')
+//para proteger las rutas que uno desee
+const passport = require ('passport')
+require('../middlewares/auth.middlewares')(passport)
+
 const userServices = require ('./users.services')
 
 //?rutas raiz
-router.get('/', userServices.getAllUsers)
+router.get('/', 
+passport.authenticate('jwt', {session:false}), 
+userServices.getAllUsers)
 
 // router.route('/').get(userServices.getAllUsers)
 
