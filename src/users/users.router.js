@@ -17,6 +17,13 @@ userServices.getAllUsers)
 
 // Para el registerUser ira en la ruta /auth/register
 
+//Ruta de informacion propia
+router.route('/me')
+    .get(
+        passport.authenticate('jwt', {session:false}),
+        userServices.getMyUser)
+   // .patch()
+   // .delete()
 
 
 //rutas dinamicas definidas//
@@ -24,5 +31,7 @@ router.route('/:id')
     .get(userServices.getUserById)
     .patch(userServices.patchUser)
     .delete(userServices.deleteUser)
+    
+    
 
 module.exports = router
