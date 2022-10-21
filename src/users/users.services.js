@@ -107,10 +107,14 @@ const getMyUser = (req, res) => {
 
 //!Path de MyUser
 const patchMyUser = (req, res) => {
-    const data = req.user
-    usersControllers.updateUser(data)
+    const id = req.user.id;
+    const {firstName, lastName, phone, birthday, gender, country} = req.body
+    
+    usersControllers.updateUser(id, {firstName, lastName, phone, birthday, gender, country})
+   
     .then(data => {
-        res.status(200).json(data)
+         res.status(200).json({message:'Your user was edited succesfully!'})
+        
     })
     .catch(err => {
         res.status(400).json({message:err.message})
