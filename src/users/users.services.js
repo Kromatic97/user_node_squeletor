@@ -112,7 +112,7 @@ const patchMyUser = (req, res) => {
     
     usersControllers.updateUser(id, {firstName, lastName, phone, birthday, gender, country})
    
-    .then(data => {
+    .then(() => {
          res.status(200).json({message:'Your user was edited succesfully!'})
         
     })
@@ -125,15 +125,16 @@ const patchMyUser = (req, res) => {
 //!Delete de  MyUSER
 const deleteMyUser = (req, res) => {
     const id = req.user.id
-    usersControllers.deleteUser(id)
-    .then(data => {
-        res.status(200).json(data)
-})
-    .catch(err => {
-        res.status(400).json({message:err.message})
-    })
-}
+    usersControllers.updateUser(id, {status:'Inactive'})
 
+    .then(() => {
+        res.status(200).json({message:'Your user was deleted succesfully!'})
+       
+   })
+   .catch(err => {
+       res.status(400).json({message:err.message})
+   });
+};
 
 
 module.exports = {
