@@ -1,5 +1,6 @@
 
 const router = require('express').Router()
+const adminValidate = require ('../middlewares/role.middleware')
 
 const { session } = require('passport')
 //para proteger las rutas que uno desee
@@ -37,8 +38,18 @@ router.route('/me')
 //rutas dinamicas definidas//
 router.route('/:id')
     .get(userServices.getUserById)
-    .patch(userServices.patchUser)
-    .delete(userServices.deleteUser)
+
+    .patch(
+        passport.authenticate('jwt', {session:false}),
+        adminValidate,
+        userServices.patchUser
+    )
+    
+    .delete(
+        passport.authenticate('jwt', {session:false}),
+        adminValidate,
+        userServices.deleteUser
+    )
     
     
 
