@@ -7,6 +7,7 @@ const config = require ('./config')
 //ROUTES
 const userRouter = require ('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const initModels = require('./models/initModels')
 
 
 //Initial config
@@ -30,7 +31,7 @@ db.sync()
 .catch(err => {
     console.log(err)
 })
-
+ initModels()
 
 
 app.get('/', (req, res) => {
