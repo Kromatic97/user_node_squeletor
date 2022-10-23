@@ -118,14 +118,14 @@ const patchMyUser = (req, res) => {
     })
     .catch(err => {
         res.status(400).json({message:err.message})
-    })
-}
+    });
+};
 
 
 //!Delete de  MyUSER
 const deleteMyUser = (req, res) => {
     const id = req.user.id
-    usersControllers.updateUser(id, {status:'Inactive'})
+    usersControllers.updateUser(id, {status:'inactive'})
 
     .then(() => {
         res.status(200).json({message:'Your user was deleted succesfully!'})
@@ -144,6 +144,6 @@ module.exports = {
     registerUser,
     deleteUser,
     getMyUser,
-    deleteMyUser,
-    patchMyUser
+    patchMyUser,
+    deleteMyUser
 }
