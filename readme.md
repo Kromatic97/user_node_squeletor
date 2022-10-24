@@ -1,25 +1,60 @@
-# SKELETON
-- EXPRES
-- POSTGRESS
-- SEQUELIZE ORM
-- AUTENTICACION CON TOKENS
-- BCRYPT PARA HASHEAR CONTRASENÑAS
-- USO DE JSON WEB TOKEN
+# Blog API
+
+- Front :
+    - Obtener todas las publicaciones
+    - Obtener una en especifico
+    - Obtener todas las categorias
+    - Obtener todos los post de una categoria en espeficico
+    - Obtener todos los posts que he creado
+    - Obtener todos los posts de un usuario en especifico
+    - Podemos paginar los posts
+    - Acciones de CRUD sobre Posts
+    - Crear categorias
 
 
-- RUTAS DE LOGIN Y CREACION DE USUARIO (REGISTER)
-- HERRAMIENTA PARA PUBLICAR IMAGENES DE PERFIL
-- CRUD DE USUARIOS CON AUTENTICACION Y MANEJO DE PERMISOS
+    ````json
+                {
+                    "total":68"
+                    "prev":"localhost:9000/api/v1/posts?start=51&limit=60",
+                    "next": "localhost:9000/api/v1/posts?start=61&limit=68",
+                    "data" : [
+                        {
+                            "id":1,
+                            "title":"ejemplo",
+                            "content":"lorem ipsum",
 
-* ORDEN
-- apps.js
-- .env
-- config.js
-- database.js
-- modelos
-- controladores
-- servicios
-- rutas
+                            "createdBy":{
+                                "id": 18,
+                                "name":"Robert",
+                                "email":"rogiromero@gmai.com"
+                            },
+
+                             "category":{
+                                "id": 4,
+                                "name":"Tecnologia",
+                            
+                            }
+
+                        }
+                    ]
+                    
+                }
+
+    ```
+
+    /api/v1
+
+    /users
+        /me
+        /me/posts
+        /me/posts/:id
+        /:id
+
+    /categories
+        /:id
+        /:id/posts
 
 
-- npm install passport passport-jwt passport passport-jwt jsonwebtoken
+    /posts
+        /:id
+        /

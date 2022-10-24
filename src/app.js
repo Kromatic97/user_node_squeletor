@@ -4,10 +4,14 @@ const express = require ('express')
 const db =  require ('./utils/database')
 //FILES
 const config = require ('./config')
+
 //ROUTES
 const userRouter = require ('./users/users.router')
 const authRouter = require('./auth/auth.router')
+const categoryRouter = require('./categories/categories.router')
+
 const initModels = require('./models/initModels')
+
 
 
 //Initial config
@@ -41,8 +45,11 @@ app.get('/', (req, res) => {
     })
 } )
 
+
+//!manejo de rutas
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
+app.use('./api/v1/categories', categoryRouter)
 
 app.listen(config.port, () => {
     console.log(`Server started at port ${config.port}`)
