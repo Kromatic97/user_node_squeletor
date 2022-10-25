@@ -2,7 +2,24 @@ const Posts = require ('../models/posts.models')
 const uuid = require('uuid')
 
 const getAllPosts = async() => {
-    const data = await Posts.findAll()
+    const data = await Posts.findAll({
+        include:[
+            {
+                model:Users
+            },
+            {
+                model:Categories,
+                attributes:{
+                    exclude:['id']
+                }
+            }
+        ],
+        attributes :{
+            exclude:['createdAT', 'createdAT']
+
+        }
+
+    })
     return data
 };
 
