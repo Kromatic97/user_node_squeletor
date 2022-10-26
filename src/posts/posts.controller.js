@@ -3,10 +3,15 @@ const uuid = require('uuid')
 const Users = require ('../models/users.models')
 const Categories = require ('../models/categories.models')
 
-const getAllPosts = async() => {
+const getAllPosts = async(offset, limit) => {
 
    
     const data = await Posts.findAll({
+        //paginacion//
+        offset:offset? offset:0,
+        limit:limit? limit:10,
+
+
         //esto es lo que no quiero mostrar//
         attributes: {
             exclude:['userId', 'categoryId', 'createdAt','updatedAt']

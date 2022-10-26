@@ -3,16 +3,16 @@ const {host} = require ('../config')
 
 const getAllPosts = (req, res) => {
 //?localhost:9000/api/v1/posts?offset=0&limit=20 //paginacion
-// const { offset, limit } = req.query
-const offset = Number (req.query.offset) || 0
-const limit =req.query.limit || 10
-const urlBase = `${host}/api/v1/posts`
+ const { offset, limit } = req.query
+// const offset = Number (req.query.offset) || 0
+// const limit =req.query.limit || 10
+// const urlBase = `${host}/api/v1/posts`
 
 postControllers.getAllPosts(offset, limit)
     .then( data => {
         res.status(200).json({
-            next:`${urlBase}?offset=${offset + limit}&limit=${limit}`,
-            prev:`${urlBase}`,
+            // next:`${urlBase}?offset=${offset + limit}&limit=${limit}`,
+            // prev:`${urlBase}`,
             offset, 
             limit,
             results:data
