@@ -1,60 +1,23 @@
-# Blog API
+# Chat API
 
 - Front :
-    - Obtener todas las publicaciones
+    - Obtener todas las conversations
     - Obtener una en especifico
-    - Obtener todas las categorias
-    - Obtener todos los post de una categoria en espeficico
-    - Obtener todos los posts que he creado
-    - Obtener todos los posts de un usuario en especifico
-    - Podemos paginar los posts
-    - Acciones de CRUD sobre Posts
-    - Crear categorias
+    - Acciones de CRUD sobre conversation
+    - Obtener todos los menssages de la conversation
+    - Accion de Create sobre menssage
+ 
+  
+  //Ruta Base
+  /api/v1
+
+  /users
+    -/me
+    -/me/conversations (todas las conversasiones creado por el usuario) Create
+    -/me/conversarions/:id (para obtener una conversacion en especifico) Delete y Update
+
+  /conversations
+
+    -/:id
 
 
-    ````json
-                {
-                    "total":68"
-                    "prev":"localhost:9000/api/v1/posts?start=51&limit=60",
-                    "next": "localhost:9000/api/v1/posts?start=61&limit=68",
-                    "data" : [
-                        {
-                            "id":1,
-                            "title":"ejemplo",
-                            "content":"lorem ipsum",
-
-                            "createdBy":{
-                                "id": 18,
-                                "name":"Robert",
-                                "email":"rogiromero@gmai.com"
-                            },
-
-                             "category":{
-                                "id": 4,
-                                "name":"Tecnologia",
-                            
-                            }
-
-                        }
-                    ]
-                    
-                }
-
-    ```
-
-    /api/v1
-
-    /users
-        /me
-        /me/posts
-        /me/posts/:id
-        /:id
-
-    /categories
-        /:id
-        /:id/posts
-
-
-    /posts
-        /:id
-        

@@ -1,20 +1,35 @@
 const Users = require('./users.models')
-const Posts = require ('./posts.models')
-const Categories = require('./categories.models')
+const Message = require ('./message.models')
+const Conversations = require('./conversations.models')
+const Participants = require ('./participants.models')
+
 
 const initModels = () => {
-
+}
 //**Relacion uno a muchos */
 
-    //?Una publicacion, pertenece a un Usuario
-    Posts.belongsTo (Users)
-    //? Un usuario tiene muchas publicaciones
-    Users.hasMany(Posts)
+//Relacion message- users - conversation//
+Message.belongsTo(Users)
+Users.hasMany(Message)
 
-    //?Una publicacion, pertenece a una Categoria
-    Posts.belongsTo (Categories)
-    //? Una categoria tiene muchas publicaciones
-    Categories.hasMany (Posts)
-}
+Message.belongsTo(Conversations)
+Conversations.hasMany(Message)
+
+//**Relacion uno a muchos */
+//Relacion participants- users - conversation//
+Participants.belongsTo(Users)
+Users.hasMany(Message)
+
+Participants.belongsTo(Conversations)
+Conversations.hasMany(Participants)
+
+//**Relacion uno a muchos */
+//Relacion users-conversation
+Conversations.belongsTo(Users)
+Users.hasMany(Conversations)
+
+
+
+
 
 module.exports = initModels

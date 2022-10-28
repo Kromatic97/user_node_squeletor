@@ -40,37 +40,9 @@ const Users = db.define('users', {
         unique:true
         },
 
-        birthday:{
-        type: DataTypes.DATEONLY,
-        allowNull: false
-        },
-
-        gender:{
+        profileImage:{
         type: DataTypes.STRING,
-        },
-
-        role:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue:'normal'
-        },
-
-        country:{
-        type: DataTypes.STRING
-         
-        },
-
-        status:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        defaultValue:'active'
-        },
-
-        isVerified:{
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        field:'is_verfied',
-        defaultValue:false
+        field:'profile_image'
 
     },
 }); 
